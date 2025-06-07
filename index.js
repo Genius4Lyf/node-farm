@@ -5,7 +5,6 @@ const http = require("http");
 const url = require("url");
 
 // 3RD PARTY MODULES
-const slugify = require("slugify");
 
 // PERSONAL MODULES
 const replaceTemplate = require("./modules/replaceTemplate");
@@ -45,7 +44,7 @@ const dataObj = JSON.parse(data);
 // console.log(data);
 // console.log(dataObj);
 
-const server2 = http.createServer((req, res) => {
+const server = http.createServer((req, res) => {
   // const pathName = req.url; //the pathname on the url on the browser, DO THIS BELOW INSTEAD
   const { query, pathname } = url.parse(req.url, true);
 
@@ -88,6 +87,6 @@ const server2 = http.createServer((req, res) => {
   }
 });
 
-server2.listen(8000, "127.0.0.1", () => {
-  console.log("Listening to requests on port 8000");
+server.listen(process.env.PORT, () => {
+  console.log(`The server has begun running on ${process.env.PORT}`);
 });
